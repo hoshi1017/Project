@@ -160,7 +160,7 @@ namespace Text_RPG
             {
                 Console.Clear();
                 Console.WriteLine("던전으로 들어가기전 활동을 할 수 있습니다.\n");
-                Console.WriteLine("1. 상태 보기\n2. 인벤토리\n3. 상점\n4. 던전");
+                Console.WriteLine("1. 상태 보기\n2. 인벤토리\n3. 상점\n4. 던전\n");
                 Console.WriteLine("원하시는 행동을 입력해주세요.\n");
 
 
@@ -353,22 +353,22 @@ namespace Text_RPG
             {
                 if (equippedItems == null || equippedItems.Length != inventory.Count)
                 {
-                    equippedItems = new bool[inventory.Count]; 
+                    equippedItems = new bool[inventory.Count];
                 }
 
                 while (true)
                 {
                     Console.Clear();
-                    Console.WriteLine("장착 관리\n\n");;
+                    Console.WriteLine("장착 관리\n\n");
                     Console.WriteLine("[아이템 목록]\n\n");
 
-                    
+
                     for (int i = 0; i < inventory.Count; i++)
                     {
                         string equippedMark = "[E]";
                         if (equippedItems[i] == true)
                         {
-                            Console.WriteLine($"{i + 1}. {equippedMark}{inventory[i].ItemName} (공격력: {inventory[i].ItemAtk}, 방어력: {inventory[i].ItemAmr}, 가격: {inventory[i].ItemValue}G)"); 
+                            Console.WriteLine($"{i + 1}. {equippedMark}{inventory[i].ItemName} (공격력: {inventory[i].ItemAtk}, 방어력: {inventory[i].ItemAmr}, 가격: {inventory[i].ItemValue}G)");
                         }
                         else
                         {
@@ -391,15 +391,11 @@ namespace Text_RPG
                     }
                     else
                     {
-                        ToggleEquip(choice - 1); 
+                        ToggleEquip(choice - 1);
                     }
                 }
             }
-            public void EnterDungeon()
-            {
-                Console.WriteLine("구현이 덜됐구연.");
-                Console.ReadLine();
-            }
+
 
             private void ToggleEquip(int index)
             {
@@ -424,6 +420,11 @@ namespace Text_RPG
                 
 
 
+            }
+            public void EnterDungeon()
+            {
+                Console.WriteLine("구현이 덜됐구연.");
+                Console.ReadLine();
             }
 
 
