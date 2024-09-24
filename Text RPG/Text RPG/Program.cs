@@ -160,14 +160,14 @@ namespace Text_RPG
             {
                 Console.Clear();
                 Console.WriteLine("던전으로 들어가기전 활동을 할 수 있습니다.\n");
-                Console.WriteLine("1. 상태 보기\n2. 인벤토리\n3. 상점\n");
+                Console.WriteLine("1. 상태 보기\n2. 인벤토리\n3. 상점\n4. 던전");
                 Console.WriteLine("원하시는 행동을 입력해주세요.\n");
 
 
 
 
 
-                while (!int.TryParse(Console.ReadLine(), out choice) || choice < 1 || choice > 3)
+                while (!int.TryParse(Console.ReadLine(), out choice) || choice < 1 || choice > 5)
                 {
                     Console.WriteLine("잘못된 입력입니다. 다시 입력해주세요.\n");
                 }
@@ -183,6 +183,11 @@ namespace Text_RPG
                     case 3:
                         ShowShop();
                         break;
+                    case 4:
+                        EnterDungeon();
+                        break;
+
+
                 }
 
             }
@@ -389,6 +394,11 @@ namespace Text_RPG
                         ToggleEquip(choice - 1); 
                     }
                 }
+            }
+            public void EnterDungeon()
+            {
+                Console.WriteLine("구현이 덜됐구연.");
+                Console.ReadLine();
             }
 
             private void ToggleEquip(int index)

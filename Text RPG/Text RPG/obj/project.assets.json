@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\chleh\\OneDrive\\바탕 화면\\새 폴더\\Project\\Text RPG\\Text RPG\\Text RPG.csproj",
+      "projectUniqueName": "C:\\Users\\chleh\\OneDrive\\바탕 화면\\Project\\Text RPG\\Text RPG\\Text RPG.csproj",
       "projectName": "Text RPG",
-      "projectPath": "C:\\Users\\chleh\\OneDrive\\바탕 화면\\새 폴더\\Project\\Text RPG\\Text RPG\\Text RPG.csproj",
+      "projectPath": "C:\\Users\\chleh\\OneDrive\\바탕 화면\\Project\\Text RPG\\Text RPG\\Text RPG.csproj",
       "packagesPath": "C:\\Users\\chleh\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\chleh\\OneDrive\\바탕 화면\\새 폴더\\Project\\Text RPG\\Text RPG\\obj\\",
+      "outputPath": "C:\\Users\\chleh\\OneDrive\\바탕 화면\\Project\\Text RPG\\Text RPG\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\chleh\\AppData\\Roaming\\NuGet\\NuGet.Config",
