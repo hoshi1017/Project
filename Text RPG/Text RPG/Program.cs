@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Net.Http.Headers;
+using System.Runtime.InteropServices;
+using System.Security.Cryptography.X509Certificates;
+using static Text_RPG.Program.TextRpg;
 
 
 namespace Text_RPG
@@ -11,40 +15,78 @@ namespace Text_RPG
         }
         public class TextRpg
         {
-            
-
-                public class Item 
+            public class Monster
+            {   
+                public static Random random = new Random();
+                public string Name;
+                public int Hp;
+                public int Attack;
+                public int Defense;
+                public Monster(string name, int hp, int attack, int defense)
                 {
-                    public bool isPurchased = false;
-                    public string ItemName { get; set; }
-                    public int ItemAtk { get; set; }
-                    public int ItemAmr { get; set; }
-                    public string ItemInfo { get; set; }
-
-                    public int ItemValue { get; set; }
-
-                    public Item(string itemName, int itemAtk, int itemAmr, string itemInfo, int itemValue)
-                    {
-                        ItemName = itemName;
-                        ItemAtk = itemAtk;
-                        ItemAmr = itemAmr;
-                        ItemInfo = itemInfo;
-                        ItemValue = itemValue;
-                        
-                    }
-
-
+                    Name = name;
+                    Hp = hp;    
+                    Attack = attack;    
+                    Defense = defense;
 
                 }
+                public static Monster CreateRandomMonster()
+                {
+                    string[] MonsterNames = {"고블린", "오크", "드래곤","스켈레톤","좀비","슬라임" };
+                    string name = MonsterNames[random.Next(MonsterNames.Length)];
+                    int hp = random.Next(30, 50);
+                    int attack = random.Next(5, 7);
+                    int defense = random.Next(3, 6);
 
+                    return new Monster(name, hp, attack, defense);
 
-            
+                }
+                
+                
+                public static void EnterDungeonEntrance()
+                {
+                    Console.WriteLine("더 깊이 들어가볼까?\n");
+                    Console.WriteLine("1. 네\n0. 도망가기\n");
+                    int choice;
+                    while (!int.TryParse(Console.ReadLine(), out choice) || choice < 0 || choice > 1)
+                    {
+                        Console.WriteLine("잘못된 입력입니다. 다시 입력해주세요.\n");
+                    }
+
+                    if (choice == 1)
+                    {
+                        EnterRealDungeon();
+                    }
+                    else
+                    {
+                        Console.WriteLine("도망친 곳에 낙원은 없다.\n");
+                        Console.WriteLine("계속하시려면 엔터를 눌러주세요.\n");
+                        Console.ReadLine();
+                        TextRpg.textrpg.Play();
+                    }
+
+                }
+                public static void EnterRealDungeon()
+                {
+                    Monster randomMonster = CreateRandomMonster();
+                    randomMonster.DisplayMonsterInfo();
+                }
+                public void DisplayMonsterInfo()
+                {
+                    Console.WriteLine($"이름: {Name}");
+                    Console.WriteLine($"체력: {Hp}");
+                    Console.WriteLine($"공격력: {Attack}");
+                    Console.WriteLine($"방어력: {Defense}");
+                }
+            }
             private List<Item> inventory = new List<Item>();
             private List<Item> shopItems = new List<Item>();
-            
-            
+
+
             private enum Job { 전사 = 1, 마법사, 도적, 궁수, 해적 }
+            
             public static TextRpg textrpg = new TextRpg();
+
             
             public int Lv { get; set; } = 1;
             public int Atk { get; set; } = 10;
@@ -58,6 +100,35 @@ namespace Text_RPG
             string jobName;
 
             string welcome = "스파르타 마을에 오신 여러분 환영합니다.\n";
+            public bool IsDead = false;
+
+            public class Item 
+            {
+                public bool isPurchased = false;
+                public string ItemName { get; set; }
+                public int ItemAtk { get; set; }
+                public int ItemAmr { get; set; }
+                public string ItemInfo { get; set; }
+
+                public int ItemValue { get; set; }
+
+                public Item(string itemName, int itemAtk, int itemAmr, string itemInfo, int itemValue)
+                {
+                    ItemName = itemName;
+                    ItemAtk = itemAtk;
+                    ItemAmr = itemAmr;
+                    ItemInfo = itemInfo;
+                    ItemValue = itemValue;
+                        
+                }
+
+
+
+            }
+
+
+            
+        
 
 
 
@@ -160,7 +231,7 @@ namespace Text_RPG
             {
                 Console.Clear();
                 Console.WriteLine("던전으로 들어가기전 활동을 할 수 있습니다.\n");
-                Console.WriteLine("1. 상태 보기\n2. 인벤토리\n3. 상점\n4. 던전\n");
+                Console.WriteLine("1. 상태 보기\n2. 인벤토리\n3. 상점\n4. 던전입구\n");
                 Console.WriteLine("원하시는 행동을 입력해주세요.\n");
 
 
@@ -184,7 +255,8 @@ namespace Text_RPG
                         ShowShop();
                         break;
                     case 4:
-                        EnterDungeon();
+                        Monster.EnterDungeonEntrance();
+                        
                         break;
 
 
@@ -421,15 +493,18 @@ namespace Text_RPG
 
 
             }
-            public void EnterDungeon()
-            {
-                Console.WriteLine("구현이 덜됐구연.");
-                Console.ReadLine();
-            }
+            
+
+
 
 
 
         }
+           
+            
+
+
+        
     }
 }
 
