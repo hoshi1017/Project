@@ -421,7 +421,7 @@ namespace Text_RPG
             private bool[] equippedItems;
             public void EquipManageMent()
             {
-                if(equippedItems==null ||equippedItems.Length < inventory.Count)
+                if(equippedItems==null ||equippedItems.Length != inventory.Count)
                 {
                     equippedItems = new bool[inventory.Count];
                 }
