@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Net.Http.Headers;
-using System.Runtime.InteropServices;
-using System.Security.Cryptography.X509Certificates;
-using static Text_RPG.Program.TextRpg;
+using System.Reflection;
+
 
 
 namespace Text_RPG
@@ -427,29 +425,37 @@ namespace Text_RPG
                 {
                     equippedItems = new bool[inventory.Count];
                 }
-
                 while (true)
                 {
+
                     Console.Clear();
                     Console.WriteLine("장착 관리\n\n");
-                    Console.WriteLine("[아이템 목록]\n\n");
-
+                    Console.WriteLine("[아이템 목록]");
+                    string equipMark = "[E]";
 
                     for (int i = 0; i < inventory.Count; i++)
                     {
-                        string equippedMark = "[E]";
+
                         if (equippedItems[i] == true)
                         {
-                            Console.WriteLine($"{i + 1}. {equippedMark}{inventory[i].ItemName} (공격력: {inventory[i].ItemAtk}, 방어력: {inventory[i].ItemAmr}, 가격: {inventory[i].ItemValue}G)");
+
+
+                            Console.WriteLine($"{i + 1} {equipMark}{inventory[i].ItemName} 공격력: +{inventory[i].ItemAtk} 방어력: +{inventory[i].ItemAmr} {inventory[i].ItemInfo}");
+
+
+
+
+
                         }
                         else
                         {
-                            Console.WriteLine($"{i + 1}. {inventory[i].ItemName} (공격력: {inventory[i].ItemAtk}, 방어력: {inventory[i].ItemAmr}, 가격: {inventory[i].ItemValue}G)");
+                            Console.WriteLine($"{i + 1} {inventory[i].ItemName} 공격력: +{inventory[i].ItemAtk} 방어력: +{inventory[i].ItemAmr} {inventory[i].ItemInfo}");
                         }
                     }
-                    Console.WriteLine("0. 나가기\n");
-                    Console.WriteLine("원하시는 행동을 입력해주세요.\n");
 
+
+                    Console.WriteLine("0. 나가기\n");
+                    Console.WriteLine("원하시는 행동을 입력해주세요.");
                     int choice;
                     while (!int.TryParse(Console.ReadLine(), out choice) || (choice < 0 || choice > inventory.Count))
                     {
@@ -459,40 +465,33 @@ namespace Text_RPG
                     if (choice == 0)
                     {
                         ShowInventory();
-                        break;
+
                     }
                     else
                     {
-                        ToggleEquip(choice - 1);
+                        var item = inventory[choice - 1];
+                        equippedItems[choice - 1] = !equippedItems[choice - 1];
+                        if (equippedItems[choice - 1] == true)
+                        {
+                            Console.WriteLine($"아이템 {item.ItemName}이 장착되었습니다.\n");
+                            Atk += item.ItemAtk;
+                            Amr += item.ItemAmr;
+                        }
+                        else
+                        {
+                            Console.WriteLine($"아이템 {item.ItemName}이 장착 해제되었습니다.\n");
+                            Atk -= item.ItemAtk;
+                            Amr -= item.ItemAmr;
+                        }
                     }
+
+
+
                 }
             }
 
 
-            private void ToggleEquip(int index)
-            {
-                var item = inventory[index];                
-                equippedItems[index] = !equippedItems[index]; 
-
-                if (equippedItems[index])
-                {
-                    Console.WriteLine($"아이템 {item.ItemName}이 장착되었습니다.\n");
-                    Atk += item.ItemAtk;
-                    Amr += item.ItemAmr;
-                }
-                else
-                {
-                    Console.WriteLine($"아이템 {item.ItemName}이 장착 해제되었습니다.\n");
-                    Atk -= item.ItemAtk;
-                    Amr -= item.ItemAmr;
-                }
-
-                Console.WriteLine("계속 하시려면 엔터키를 눌러주세요.");
-                Console.ReadLine();
-                
-
-
-            }
+           
             
 
 
