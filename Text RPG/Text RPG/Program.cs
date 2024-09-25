@@ -486,7 +486,7 @@ namespace Text_RPG
             {
                 
                 Random rand = new Random();
-                double a = ((double)rand.Next(10, 20) / 100) * Atk;
+                double a = ((double)rand.Next(10, 20) / 100) * Atk * 1000;
 
 
                 
