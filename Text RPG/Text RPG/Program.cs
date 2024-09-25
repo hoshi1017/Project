@@ -17,7 +17,7 @@ namespace Text_RPG
         }
         public class TextRpg
         {
-
+            
             public class Monster
             {
                 public static Random random = new Random();
@@ -198,14 +198,14 @@ namespace Text_RPG
             {
                 Console.Clear();
                 Console.WriteLine("던전으로 들어가기전 활동을 할 수 있습니다.\n");
-                Console.WriteLine("1. 상태 보기\n2. 인벤토리\n3. 상점\n4. 던전입구\n");
+                Console.WriteLine("1. 상태 보기\n2. 인벤토리\n3. 상점\n4. 던전입구\n5. 휴식하기");
                 Console.WriteLine("원하시는 행동을 입력해주세요.\n");
 
 
 
 
 
-                while (!int.TryParse(Console.ReadLine(), out choice) || choice < 1 || choice > 5)
+                while (!int.TryParse(Console.ReadLine(), out choice) || choice < 1 || choice > 6)
                 {
                     Console.WriteLine("잘못된 입력입니다. 다시 입력해주세요.\n");
                 }
@@ -224,6 +224,9 @@ namespace Text_RPG
                     case 4:
                         EnterDungeonEntrance();
 
+                        break;
+                    case 5:
+                        GetRest();
                         break;
 
 
@@ -453,6 +456,7 @@ namespace Text_RPG
             public static void EnterDungeonEntrance()
             {
                 int choice;
+
                 Console.Clear();
                 Console.WriteLine("더 깊이 들어가볼까?\n");
                 Console.WriteLine("1. 쉬운 던전 l 방어력 5 이상 권장\n2. 일반 던전 l 방어력 11 이상 권장\n3. 어려운 던전 l 방어력 17 이상 권장\n0. 도망가기\n");
@@ -490,7 +494,7 @@ namespace Text_RPG
                     {
                         
                         CurrentHp -= rand.Next(20 + (5 - Amr), 35 + (5 - Amr));
-
+                        
                         
                         if (CurrentHp <= 0)
                         {
@@ -501,6 +505,9 @@ namespace Text_RPG
                             Console.WriteLine("던전을 클리어했습니다.\n");
                             Console.WriteLine($"현재체력: {CurrentHp}\n");
                             Console.WriteLine("계속 하시려면 엔터키를 눌러주세요.\n");
+                            Gold += 1500;
+                            Console.WriteLine($"현재골드: {Gold}\n");
+                            
                             
                             Console.ReadLine();
                             EnterDungeonEntrance(); 
@@ -536,6 +543,8 @@ namespace Text_RPG
                             Console.WriteLine("던전을 클리어했습니다.\n");
                             CurrentHp -= rand.Next(20 + (5 - Amr), 35 + (5 - Amr));
                             Console.WriteLine($"현재체력: {CurrentHp}\n");
+                            Gold += 1500;
+                            Console.WriteLine($"현재골드: {Gold}\n");
                             Console.WriteLine("계속 하시려면 엔터키를 눌러주세요.\n");
                             Console.ReadLine();
 
@@ -572,6 +581,8 @@ namespace Text_RPG
                         {
                             Console.WriteLine("던전을 클리어했습니다.\n");
                             Console.WriteLine($"현재체력: {CurrentHp}\n");
+                            Gold += 1700;
+                            Console.WriteLine($"현재골드: {Gold}\n");
                             Console.WriteLine("계속 하시려면 엔터키를 눌러주세요.\n");
                             Console.ReadLine();
                             EnterDungeonEntrance(); 
@@ -607,6 +618,8 @@ namespace Text_RPG
                             Console.WriteLine("던전을 클리어했습니다.\n");
                             CurrentHp -= rand.Next(20 + (11 - Amr), 35 + (11 - Amr));
                             Console.WriteLine($"현재체력: {CurrentHp}\n");
+                            Gold += 1700;
+                            Console.WriteLine($"현재골드: {Gold}\n");
                             Console.WriteLine("계속 하시려면 엔터키를 눌러주세요.\n");
                             Console.ReadLine();
 
@@ -644,6 +657,8 @@ namespace Text_RPG
                         {
                             Console.WriteLine("던전을 클리어했습니다.\n");
                             Console.WriteLine($"현재체력: {CurrentHp}\n");
+                            Gold += 2500;
+                            Console.WriteLine($"현재골드: {Gold}\n");
                             Console.WriteLine("계속 하시려면 엔터키를 눌러주세요.\n");
                             Console.ReadLine();
                             EnterDungeonEntrance(); 
@@ -678,6 +693,8 @@ namespace Text_RPG
                             Console.WriteLine("던전을 클리어했습니다.\n");
                             CurrentHp -= rand.Next(20 + (17 - Amr), 35 + (17 - Amr));
                             Console.WriteLine($"현재체력: {CurrentHp}\n");
+                            Gold += 2500;
+                            Console.WriteLine($"현재골드: {Gold}\n");
                             Console.WriteLine("계속 하시려면 엔터키를 눌러주세요.\n");
                             Console.ReadLine();
                             
@@ -709,6 +726,35 @@ namespace Text_RPG
                 Console.ReadLine();
                 StartGame();
             }
+            public void GetRest()
+            {
+                int choice;
+                Console.WriteLine($"500 G 를 내면 체력을 회복할 수 있습니다.(보유 골드: {Gold} G)\n");
+                Console.WriteLine("1. 휴식하기");
+                Console.WriteLine("0. 나가기\n");
+                Console.WriteLine("원하시는 행동을 입력해주세요\n");
+                while (!int.TryParse(Console.ReadLine(), out choice) || (choice < 0 || choice > 1))
+                {
+                    Console.WriteLine("잘못된 입력입니다. 다시 입력해주세요.\n");
+                }
+                if(choice == 0)
+                {
+                    textrpg.Play();
+
+                }
+                else
+                {
+                    Console.WriteLine("휴식을 완료하였습니다.\n");
+                    Gold -= 500;
+                    CurrentHp = 100;
+                    Console.WriteLine("계속 하시려면 엔터키를 눌러주세요.\n");
+                    Console.ReadLine();
+                    
+                    textrpg.Play();
+                }
+            }   
+
+                        
         }
     }    
 }
