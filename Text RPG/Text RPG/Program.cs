@@ -55,13 +55,12 @@ namespace Text_RPG
 
 
             public int Lv { get; set; } = 1;
-            public int Atk { get; set; } = 10;
+            public static double Atk { get; set; } = 10;
 
             public static int Amr { get; set; } = 5;
-            public static int MaxHp { get; set; } = 100;
             public static int CurrentHp { get; set; } = 100;
-            public static int Gold { get; set; } = 1500;
-            public static bool IsAlive { get; set; } = true;
+            public static double Gold { get; set; } = 1500;
+
             int choice;
             public string name;
             int jobValue;
@@ -485,9 +484,18 @@ namespace Text_RPG
             }
             public static void EnterRealDungeon(int value)
             {
+                
                 Random rand = new Random();
+                double a = ((double)rand.Next(10, 20) / 100) * Atk;
+
+
+                
+
+
                 if (value == 1)
                 {
+                    
+
                     Monster randomMonster = Monster.CreateRandomMonster();
                     Console.WriteLine($"{randomMonster.NickName} {randomMonster.Name}을 만났습니다.\n");
                     if (Amr - 5 > 0)
@@ -505,7 +513,8 @@ namespace Text_RPG
                             Console.WriteLine("던전을 클리어했습니다.\n");
                             Console.WriteLine($"현재체력: {CurrentHp}\n");
                             Console.WriteLine("계속 하시려면 엔터키를 눌러주세요.\n");
-                            Gold += 1500;
+                            Gold += 1000 + a; 
+                            
                             Console.WriteLine($"현재골드: {Gold}\n");
                             
                             
@@ -543,7 +552,7 @@ namespace Text_RPG
                             Console.WriteLine("던전을 클리어했습니다.\n");
                             CurrentHp -= rand.Next(20 + (5 - Amr), 35 + (5 - Amr));
                             Console.WriteLine($"현재체력: {CurrentHp}\n");
-                            Gold += 1500;
+                            Gold += 1000 + a;
                             Console.WriteLine($"현재골드: {Gold}\n");
                             Console.WriteLine("계속 하시려면 엔터키를 눌러주세요.\n");
                             Console.ReadLine();
@@ -581,7 +590,7 @@ namespace Text_RPG
                         {
                             Console.WriteLine("던전을 클리어했습니다.\n");
                             Console.WriteLine($"현재체력: {CurrentHp}\n");
-                            Gold += 1700;
+                            Gold += 1700 + a;
                             Console.WriteLine($"현재골드: {Gold}\n");
                             Console.WriteLine("계속 하시려면 엔터키를 눌러주세요.\n");
                             Console.ReadLine();
@@ -618,7 +627,7 @@ namespace Text_RPG
                             Console.WriteLine("던전을 클리어했습니다.\n");
                             CurrentHp -= rand.Next(20 + (11 - Amr), 35 + (11 - Amr));
                             Console.WriteLine($"현재체력: {CurrentHp}\n");
-                            Gold += 1700;
+                            Gold += 1700 + a;
                             Console.WriteLine($"현재골드: {Gold}\n");
                             Console.WriteLine("계속 하시려면 엔터키를 눌러주세요.\n");
                             Console.ReadLine();
@@ -657,7 +666,7 @@ namespace Text_RPG
                         {
                             Console.WriteLine("던전을 클리어했습니다.\n");
                             Console.WriteLine($"현재체력: {CurrentHp}\n");
-                            Gold += 2500;
+                            Gold += 2500 + a;
                             Console.WriteLine($"현재골드: {Gold}\n");
                             Console.WriteLine("계속 하시려면 엔터키를 눌러주세요.\n");
                             Console.ReadLine();
@@ -693,7 +702,7 @@ namespace Text_RPG
                             Console.WriteLine("던전을 클리어했습니다.\n");
                             CurrentHp -= rand.Next(20 + (17 - Amr), 35 + (17 - Amr));
                             Console.WriteLine($"현재체력: {CurrentHp}\n");
-                            Gold += 2500;
+                            Gold += 2500 + a;
                             Console.WriteLine($"현재골드: {Gold}\n");
                             Console.WriteLine("계속 하시려면 엔터키를 눌러주세요.\n");
                             Console.ReadLine();
