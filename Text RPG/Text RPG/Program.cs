@@ -499,7 +499,9 @@ namespace Text_RPG
                         else
                         {
                             Console.WriteLine("던전을 클리어했습니다.\n");
+                            Console.WriteLine($"현재체력: {CurrentHp}\n");
                             Console.WriteLine("계속 하시려면 엔터키를 눌러주세요.\n");
+                            
                             Console.ReadLine();
                             EnterDungeonEntrance(); 
                         }
@@ -510,11 +512,13 @@ namespace Text_RPG
                         if (rand.Next(1, 11) < 5)
                         {
                             Console.WriteLine("던전을 클리어하지 못했습니다.\n");
+                            CurrentHp = CurrentHp / 2;
+                            Console.WriteLine($"현재체력: {CurrentHp}\n");
                             Console.WriteLine("계속 하시려면 엔터키를 눌러주세요.\n");
                             Console.ReadLine();
 
                             
-                            CurrentHp = CurrentHp / 2;
+                            
 
                             
                             if (CurrentHp <= 0)
@@ -530,11 +534,13 @@ namespace Text_RPG
                         else
                         {
                             Console.WriteLine("던전을 클리어했습니다.\n");
+                            CurrentHp -= rand.Next(20 + (5 - Amr), 35 + (5 - Amr));
+                            Console.WriteLine($"현재체력: {CurrentHp}\n");
                             Console.WriteLine("계속 하시려면 엔터키를 눌러주세요.\n");
                             Console.ReadLine();
 
                             
-                            CurrentHp -= rand.Next(20 + (5 - Amr), 35 + (5 - Amr));
+                            
 
                             
                             if (CurrentHp <= 0)
@@ -565,6 +571,7 @@ namespace Text_RPG
                         else
                         {
                             Console.WriteLine("던전을 클리어했습니다.\n");
+                            Console.WriteLine($"현재체력: {CurrentHp}\n");
                             Console.WriteLine("계속 하시려면 엔터키를 눌러주세요.\n");
                             Console.ReadLine();
                             EnterDungeonEntrance(); 
@@ -576,11 +583,13 @@ namespace Text_RPG
                         if (rand.Next(1, 11) < 5)
                         {
                             Console.WriteLine("던전을 클리어하지 못했습니다.\n");
+                            CurrentHp = CurrentHp / 2;
+                            Console.WriteLine($"현재체력: {CurrentHp}\n");
                             Console.WriteLine("계속 하시려면 엔터키를 눌러주세요.\n");
                             Console.ReadLine();
 
                             
-                            CurrentHp = CurrentHp / 2;
+                            
 
                            
                             if (CurrentHp <= 0)
@@ -596,11 +605,13 @@ namespace Text_RPG
                         else
                         {
                             Console.WriteLine("던전을 클리어했습니다.\n");
+                            CurrentHp -= rand.Next(20 + (11 - Amr), 35 + (11 - Amr));
+                            Console.WriteLine($"현재체력: {CurrentHp}\n");
                             Console.WriteLine("계속 하시려면 엔터키를 눌러주세요.\n");
                             Console.ReadLine();
 
                             
-                            CurrentHp -= rand.Next(20 + (11 - Amr), 35 + (11 - Amr));
+                            
 
                             
                             if (CurrentHp <= 0)
@@ -632,6 +643,7 @@ namespace Text_RPG
                         else
                         {
                             Console.WriteLine("던전을 클리어했습니다.\n");
+                            Console.WriteLine($"현재체력: {CurrentHp}\n");
                             Console.WriteLine("계속 하시려면 엔터키를 눌러주세요.\n");
                             Console.ReadLine();
                             EnterDungeonEntrance(); 
@@ -643,11 +655,13 @@ namespace Text_RPG
                         if (rand.Next(1, 11) < 5)
                         {
                             Console.WriteLine("던전을 클리어하지 못했습니다.\n");
+                            CurrentHp = CurrentHp / 2;
+                            Console.WriteLine($"현재체력: {CurrentHp}\n");
                             Console.WriteLine("계속 하시려면 엔터키를 눌러주세요.\n");
                             Console.ReadLine();
 
                             
-                            CurrentHp = CurrentHp / 2;
+                            
 
                             
                             if (CurrentHp <= 0)
@@ -662,12 +676,14 @@ namespace Text_RPG
                         else
                         {
                             Console.WriteLine("던전을 클리어했습니다.\n");
+                            CurrentHp -= rand.Next(20 + (17 - Amr), 35 + (17 - Amr));
+                            Console.WriteLine($"현재체력: {CurrentHp}\n");
                             Console.WriteLine("계속 하시려면 엔터키를 눌러주세요.\n");
                             Console.ReadLine();
                             
 
                             
-                            CurrentHp -= rand.Next(20 + (17 - Amr), 35 + (17 - Amr));
+                            
 
                            
                             if (CurrentHp <= 0)
@@ -686,6 +702,7 @@ namespace Text_RPG
             }
             public void Die()
             {
+                Console.Clear();
                 Console.WriteLine("플레이어가 사망하셨습니다.\n");
                 Console.WriteLine("초기 화면으로 이동합니다.\n계속 하시려면 엔터키를 눌러주세요.\n");
 
