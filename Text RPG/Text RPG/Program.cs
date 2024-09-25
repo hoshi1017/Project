@@ -487,7 +487,7 @@ namespace Text_RPG
                 
                 Random rand = new Random();
                 double a = ((double)rand.Next(100, 201) / 1000) * Atk ;
-                // (Atk~Atk*2)중 랜덤으로 숫자를 뽑아서 100으로 나눠준 결과?
+                
 
                 
 
