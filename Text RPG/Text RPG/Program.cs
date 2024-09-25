@@ -486,7 +486,7 @@ namespace Text_RPG
             {
                 
                 Random rand = new Random();
-                double a = ((double)rand.Next(10, 20) / 100) * Atk * 1000;
+                double a = ((double)rand.Next(10, 20) / 100) * Atk ;
 
 
                 
@@ -513,7 +513,7 @@ namespace Text_RPG
                             Console.WriteLine("던전을 클리어했습니다.\n");
                             Console.WriteLine($"현재체력: {CurrentHp}\n");
                             Console.WriteLine("계속 하시려면 엔터키를 눌러주세요.\n");
-                            Gold += 1000 + a; 
+                            Gold += 1000 +  a *1000; 
                             
                             Console.WriteLine($"현재골드: {Gold}\n");
                             
@@ -552,7 +552,7 @@ namespace Text_RPG
                             Console.WriteLine("던전을 클리어했습니다.\n");
                             CurrentHp -= rand.Next(20 + (5 - Amr), 35 + (5 - Amr));
                             Console.WriteLine($"현재체력: {CurrentHp}\n");
-                            Gold += 1000 + a;
+                            Gold += 1000 + a * 1000;
                             Console.WriteLine($"현재골드: {Gold}\n");
                             Console.WriteLine("계속 하시려면 엔터키를 눌러주세요.\n");
                             Console.ReadLine();
@@ -590,7 +590,7 @@ namespace Text_RPG
                         {
                             Console.WriteLine("던전을 클리어했습니다.\n");
                             Console.WriteLine($"현재체력: {CurrentHp}\n");
-                            Gold += 1700 + a;
+                            Gold += 1700 + a * 1700;
                             Console.WriteLine($"현재골드: {Gold}\n");
                             Console.WriteLine("계속 하시려면 엔터키를 눌러주세요.\n");
                             Console.ReadLine();
@@ -627,7 +627,7 @@ namespace Text_RPG
                             Console.WriteLine("던전을 클리어했습니다.\n");
                             CurrentHp -= rand.Next(20 + (11 - Amr), 35 + (11 - Amr));
                             Console.WriteLine($"현재체력: {CurrentHp}\n");
-                            Gold += 1700 + a;
+                            Gold += 1700 + a * 1700;
                             Console.WriteLine($"현재골드: {Gold}\n");
                             Console.WriteLine("계속 하시려면 엔터키를 눌러주세요.\n");
                             Console.ReadLine();
@@ -666,7 +666,7 @@ namespace Text_RPG
                         {
                             Console.WriteLine("던전을 클리어했습니다.\n");
                             Console.WriteLine($"현재체력: {CurrentHp}\n");
-                            Gold += 2500 + a;
+                            Gold += 2500 + a * 2500;
                             Console.WriteLine($"현재골드: {Gold}\n");
                             Console.WriteLine("계속 하시려면 엔터키를 눌러주세요.\n");
                             Console.ReadLine();
@@ -702,7 +702,7 @@ namespace Text_RPG
                             Console.WriteLine("던전을 클리어했습니다.\n");
                             CurrentHp -= rand.Next(20 + (17 - Amr), 35 + (17 - Amr));
                             Console.WriteLine($"현재체력: {CurrentHp}\n");
-                            Gold += 2500 + a;
+                            Gold += 2500 + a * 2500;
                             Console.WriteLine($"현재골드: {Gold}\n");
                             Console.WriteLine("계속 하시려면 엔터키를 눌러주세요.\n");
                             Console.ReadLine();
